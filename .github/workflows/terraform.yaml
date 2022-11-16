@@ -1,0 +1,51 @@
+name: "Terraform"
+on:
+  pull_request:
+    types: [closed]
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
+jobs:
+  terraform:
+    name: 'Terraform'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    
+    env:
+         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+         AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+    
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      
+      - name: setup terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_wrapper: false
+
+      - name: Terraform fmt
+        id: fmt
+        run: terraform fmt -check
+        continue-on-error: true
+      
+      - name: Terraform Init
+        id: init
+        run: terraform init
+
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate -no-color
+
+      - name: Terraform Plan -input=false
+        id: plan
+        run: |
+          terraform plan 
+        
+      - name: Release
+        uses: K-Phoen/semver-release-action@master
+        with: 
+         release_branch: master

@@ -1,9 +1,9 @@
 name: "Terraform"
 on:
- # pull_request:
-  #  types: [closed]
-  push:
-    branches: [main]
+  pull_request:
+    types: [closed]
+ # push:
+ #   branches: [main]
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
@@ -42,8 +42,8 @@ jobs:
         id: validate
         run: terraform validate -no-color
 
-      - name Terraform lint
-        uses: actionshub/terraform-lint@main
+      #- name Terraform lint
+        #uses: actionshub/terraform-lint@main
 
       - name: Terraform Plan 
         id: plan

@@ -2,9 +2,11 @@ name: self-hosted runner testing
 on:
   push:
    branches: [main]
+  workflow_dispatch:
+
 jobs:
   selfhosted-runner:
-      runs-on: self-hosted
+      runs-on: pratheesh-p
       steps:
         - uses: actions/checkout@v3
         

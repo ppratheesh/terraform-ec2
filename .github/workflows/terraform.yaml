@@ -40,10 +40,10 @@ jobs:
         id: validate
         run: terraform validate -no-color
 
-      - name: Terraform Plan -input=false
+      - name: Terraform Plan 
         id: plan
         run: |
-          terraform plan 
+          terraform plan -input=false
         
       - name: Release
         uses: K-Phoen/semver-release-action@master

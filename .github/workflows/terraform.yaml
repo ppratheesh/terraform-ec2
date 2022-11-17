@@ -2,8 +2,8 @@ name: "Terraform"
 on:
   pull_request:
     types: [closed]
-  #push:
-    #branches: [main]
+    branches:
+      - 'main'
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
@@ -15,11 +15,6 @@ jobs:
       run:
         shell: bash
     
-  #  env:
-    #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-     #    AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-       #  AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
-    
     steps:
       - name: checkout
         uses: actions/checkout@v3
@@ -28,11 +23,6 @@ jobs:
         uses: hashicorp/setup-terraform@v1
         with:
           terraform_wrapper: false
-
-      - name: Terraform fmt
-        id: fmt
-        run: terraform fmt -check
-        continue-on-error: true
       
       - name: Terraform Init
         id: init
@@ -41,14 +31,6 @@ jobs:
       - name: Terraform Validate
         id: validate
         run: terraform validate -no-color
-
-    #  - name: Terraform lint
-      #  uses: actionshub/terraform-lint@main
-
-   #   - name: Terraform Plan 
-    #   id: plan
-      #  run: |
-       #   terraform plan -input=false
         
       - name: Release
         uses: K-Phoen/semver-release-action@master

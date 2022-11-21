@@ -27,7 +27,7 @@ jobs:
           
          
       - name: release action
-        uses: ./terraform-exercise/.github/actions/release
+        uses: terraform-exercise/.github/actions/release@master
         with:
           RELEASE_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -11,10 +11,6 @@ jobs:
   terraform:
     name: 'Terraform'
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-    
     steps:
       - name: Check out code
         uses: actions/checkout@v3

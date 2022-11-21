@@ -21,8 +21,10 @@ jobs:
         
       - name: checkout release workflow
         uses: actions/checkout@v3
+        with:
           repository: ppratheesh/terraform-exercise
           path: ./terraform-exercise
+          
          
       - name: release action
         uses: ./terraform-exercise/.github/actions/release

@@ -16,23 +16,17 @@ jobs:
         shell: bash
     
     steps:
-      - name: checkout
-        uses: actions/checkout@v3
-      
-      - name: setup terraform
-        uses: hashicorp/setup-terraform@v1
-        with:
-          terraform_wrapper: false
-      
-      - name: Terraform Init
-        id: init
-        run: terraform init
-
-      - name: Terraform Validate
-        id: validate
-        run: terraform validate -no-color
+      - name: Check out code
+        uses: actions/checkout@v2
         
-      - name: Release
-        uses: K-Phoen/semver-release-action@master
-        with: 
-         release_branch: main
+      - name: checkout checkov compositeAction
+        uses: actions/checkout@v3
+        with:
+          repository: ppratheesh/terraform-exercise
+          path: ./terraform-exercise
+        
+      - name: run checkov scan against plan
+        uses: ./terraform-exercise/.github/actions/release
+        with:
+          RELEASE_BRANCH: main
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

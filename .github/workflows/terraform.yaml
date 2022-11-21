@@ -17,10 +17,15 @@ jobs:
     
     steps:
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         
-      - name: checkout checkov compositeAction
-        uses: ppratheesh/terraform-exercise@master
+      - name: checkout release workflow
+        uses: actions/checkout@v3
+          repository: ppratheesh/terraform-exercise
+          path: ./terraform-exercise
+         
+      - name: release action
+        uses: ./terraform-exercise/.github/actions/release
         with:
           RELEASE_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

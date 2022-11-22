@@ -36,7 +36,7 @@ jobs:
           ls -la github-shared-workflows
           
       - name: release action
-        uses: ./github-shared-workflows/github-shared-workflows/.github/actions/release
+        uses: ./github-shared-workflows/.github/actions/release
         with:
           RELEASE_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

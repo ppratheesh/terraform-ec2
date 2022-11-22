@@ -28,7 +28,7 @@ jobs:
       - name: checkout release workflow
         uses: actions/checkout@v3
         with:
-          repository: ppratheesh/github-shared-workflows
+          repository: infracloudio/github-shared-workflows
           path: ./github-shared-workflows
           
       - name: checing folder
@@ -38,13 +38,13 @@ jobs:
           echo "inided folder"
           ls -la github-shared-workflows
           echo "cd into ./github-shared-workflows/.github/actions/release/"
-          cd ./github-shared-workflows/.github/actions/release/
+         # cd ./github-shared-workflows/.github/actions/release/
           echo "printing pwd"
           pwd
           ls -la
           
       - name: release action
-        uses: ./github-shared-workflows/.github/actions/release
+        uses: ./github-shared-workflows/.github/actions/checkov
         with:
           RELEASE_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

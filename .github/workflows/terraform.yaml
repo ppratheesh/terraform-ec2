@@ -4,6 +4,9 @@ on:
     types: [closed]
     branches:
       - 'main'
+defaults:
+      run:
+        shell: bash
     
 jobs:
   terraform:

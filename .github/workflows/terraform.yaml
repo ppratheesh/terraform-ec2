@@ -1,4 +1,4 @@
-name: "Terraform"
+name: "Release workflow"
 on:
   pull_request:
     types: [closed]
@@ -14,7 +14,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v3
         
-      - name: checkout release workflow
+      - name: checkout composite action
         uses: actions/checkout@v3
         with:
           repository: ppratheesh/github-shared-workflows

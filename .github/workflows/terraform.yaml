@@ -30,7 +30,8 @@ jobs:
           
       - name: checing folder
         run: |
-          echo "path is $pwd and file is $ls"
+          ls
+          pwd
           
       - name: release action
         uses: ./github-shared-workflows/github-shared-workflows/.github/actions/release

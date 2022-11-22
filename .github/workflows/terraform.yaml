@@ -37,6 +37,11 @@ jobs:
           pwd
           echo "inided folder"
           ls -la github-shared-workflows
+          echo "cd into ./github-shared-workflows/.github/actions/release/"
+          cd ./github-shared-workflows/.github/actions/release/
+          echo "printing pwd"
+          pwd
+          ls -la
           
       - name: release action
         uses: ./github-shared-workflows/.github/actions/release

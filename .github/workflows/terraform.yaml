@@ -18,11 +18,11 @@ jobs:
       - name: checkout release workflow
         uses: actions/checkout@v3
         with:
-          repository: ppratheesh/terraform-exercise
-          path: ./terraform-exercise
+          repository: ppratheesh/github-shared-workflows
+          path: ./github-shared-workflows
           
       - name: release action
-        uses: ./terraform-exercise/.github/actions/release
+        uses: ./github-shared-workflows/.github/actions/release
         with:
           RELEASE_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

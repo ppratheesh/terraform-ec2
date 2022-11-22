@@ -28,7 +28,7 @@ jobs:
       - name: checkout release workflow
         uses: actions/checkout@v3
         with:
-          repository: infracloudio/github-shared-workflows
+          repository: ppratheesh/github-shared-workflows
           path: ./github-shared-workflows
           
       - name: checing folder

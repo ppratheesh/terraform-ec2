@@ -4,13 +4,14 @@ on:
     types: [closed]
     branches:
       - 'main'
-env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
 jobs:
   terraform:
     name: 'Terraform'
     runs-on: ubuntu-latest
+    env:
+      current-dir: /home/runner/work/${{ github.event.repository.name }}/${{ github.event.repository.name }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   
     steps:
       - name: Check out code
         uses: actions/checkout@v3
